@@ -61,6 +61,7 @@ class RouteViewModel : ViewModel() {
             )
         }
     }
+    
 
     // Boton cambiar camara frontal/trasera
     fun onToggleCamera() {
