@@ -18,8 +18,11 @@ class RouteViewModel : ViewModel() {
         _uiState.update { current ->
             current.copy(
                 currentLocation = point,
-                routePoints = if (current.isTracking) current.routePoints + point
-                else current.routePoints
+                routePoints = if (current.isTracking && isFarEnough(current.routePoints.lastOrNull(), point)) {
+                    current.routePoints + point
+                } else {
+                    current.routePoints
+                }
             )
         }
     }
@@ -51,7 +54,6 @@ class RouteViewModel : ViewModel() {
         }
     }
 
-    // TODO tuyo: boton borrar recorrido
     // Boton borrar recorrido
     fun onClearRoute() {
         _uiState.update { current ->
@@ -62,11 +64,20 @@ class RouteViewModel : ViewModel() {
         }
     }
 
-
     // Boton cambiar camara frontal/trasera
     fun onToggleCamera() {
         _uiState.update { current ->
             current.copy(useFrontCamera = !current.useFrontCamera)
         }
+    }
+
+    // Evita llenar la ruta de puntos casi iguales cuando el dispositivo esta quieto
+    private fun isFarEnough(last: GeoPoint?, new: GeoPoint, minMeters: Double = 3.0): Boolean {
+        if (last == null) return true
+        val metersPerDegree = 111_320.0
+        val dLat = (new.latitude - last.latitude) * metersPerDegree
+        val dLng = (new.longitude - last.longitude) * metersPerDegree *
+            kotlin.math.cos(Math.toRadians(last.latitude))
+        return kotlin.math.hypot(dLat, dLng) >= minMeters
     }
 }
