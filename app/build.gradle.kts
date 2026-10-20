@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.coil.compose)
 
+    implementation(libs.androidx.compose.material.icons.extended)
     // ViewModel y estado en Compose
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
