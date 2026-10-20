@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cd_switch_camera">Cambiar cámara frontal o trasera</string>
+    <string name="cd_take_photo">Tomar foto</string>
+    <string name="cd_start_route">Iniciar recorrido</string>
+    <string name="cd_stop_route">Detener recorrido</string>
+    <string name="cd_clear_route">Borrar recorrido</string>
+</resources>
