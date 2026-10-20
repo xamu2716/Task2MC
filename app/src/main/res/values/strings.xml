@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Task2MC</string>
+    <string name="permission_camera_denied">Lo sentimos, se necesita el permiso de cámara para tomar fotos</string>
+    <string name="permission_location_denied">Lo sentimos, se necesita el permiso de ubicación para seguir tu recorrido</string>
 </resources>
